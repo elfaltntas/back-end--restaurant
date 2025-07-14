@@ -92,6 +92,9 @@ app.get("/api/fully-booked-dates", async (req, res) => {
         }
       }
     ]);
+    app.get('/', (req, res) => {
+  res.send('API is working 🚀');
+});
 
     // Yalnızca tarih dizisini çıkaralım
     const fullyBookedDates = results.map(r => r._id);
