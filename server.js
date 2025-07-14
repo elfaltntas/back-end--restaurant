@@ -52,7 +52,7 @@ app.post("/api/reservations", async (req, res) => {
 
     const totalPeopleToday = todaysReservations.length > 0 ? todaysReservations[0].totalPeople : 0;
 
-    if (totalPeopleToday + people_count > 4) {
+    if (totalPeopleToday + people_count > 50) {
       return res.status(400).json({
         message: `Bugün için maksimum kapasite (50 kişi) dolmuştur. Mevcut rezervasyon sayısı: ${totalPeopleToday}`,
       });
@@ -88,7 +88,7 @@ app.get("/api/fully-booked-dates", async (req, res) => {
       },
       {
         $match: {
-          totalPeople: { $gte: 4 }  // 50 veya üzeri dolu olan günler
+          totalPeople: { $gte: 50 }  // 50 veya üzeri dolu olan günler
         }
       }
     ]);
